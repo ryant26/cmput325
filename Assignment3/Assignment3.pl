@@ -9,8 +9,8 @@ xreverse([H|T], Y) :-
 xunique([A], [A]).
 
 xunique([A|L1], [A|L2]) :-
-	xunique(L1, L2).
+	delete(L1, A, Lp),
+	xunique(Lp, L2).
 
 xunique([H1|T1], [H2|T2]) :-
-	member(H1, T1),
 	xunique(T1, [H2|T2]).
