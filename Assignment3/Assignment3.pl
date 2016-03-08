@@ -6,11 +6,11 @@ xreverse([H|T], Y) :-
 	append(Reverse, [H], Y).
 
 % Question 2:
-xunique([A], [A]).
+xunique([], []).
 
-xunique([A|L1], [A|L2]) :-
-	delete(L1, A, Lp),
+xunique([H1|L1], [H2|L2]) :-
+	H1 = H2,
+	delete(L1, H1, Lp),
 	xunique(Lp, L2).
 
-xunique([H1|T1], [H2|T2]) :-
-	xunique(T1, [H2|T2]).
+% Question 3:
