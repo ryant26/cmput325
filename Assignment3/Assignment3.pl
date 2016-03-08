@@ -9,9 +9,11 @@ xreverse([H|T], Y) :-
 xunique([], Lu).
 
 xunique([H|T], Lu) :-
-	notMember(H, Lu),
-	append(H, Lu, Lu),
-	xunique(T, Lu).
+	xunique(T, Accum),
+	notMember(H, Accum),
+	append(Accum, [H], Lu).
+
+
  
 
 notMember(E, []).
