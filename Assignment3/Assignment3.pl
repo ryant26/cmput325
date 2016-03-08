@@ -13,9 +13,6 @@ xunique([H|T], Lu) :-
 	notMember(H, Accum),
 	append(Accum, [H], Lu).
 
-
- 
-
 notMember(E, []).
 
 notMember(E, [H|T]) :-
