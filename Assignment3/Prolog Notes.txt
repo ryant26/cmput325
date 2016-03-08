@@ -1,0 +1,69 @@
+p(t1, ... , tn):
+	- p is a "predicate symbol"
+	- ti are "terms", which can only be used as arguments in predicates
+
+Terms
+=====
+- A constance is a term (starts with lowercase letter)
+- A variable is a term (starts with an uppercase letter)
+- if s1, ... , sn are terms, and f is a k-ary function symbol, then f(s1, ... , sn) is a term
+
+Function Symbols
+================
+- like constants, must start with LC letter
+- usually used to structure data
+- we compute using predicates
+
+Prolog Program
+==============
+- Collection of "Clauses"
+- clause is either a fact OR a rule
+	- fact: father(ken, mary).
+	- rule: parent(X,Y) :- father (X,Y).
+
+- Facts are also called unconditional clauses
+- a fact like father(ken, mary). means that his predicate is unconditionally true
+- variables within facts are *universally quantified*
+	- eg. awesome(X).
+		- For ALL X awesome(x)
+		- that is, every X is awesome
+
+Rules
+=====
+parent (X, Y) :- father (X, Y).
+- The :- is read as "if"
+- the "head" of the clause is parent (X, Y)
+- the head is true under the condition that the body is true ( body = father (X, Y) )
+- The body can have a list of atoms
+- All of them must be true to imply that the head is true
+
+ex. banana(X) :- yellow(X), fruit(X), bendy(X)
+
+- thus the comma can be thought of as an "AND" operator
+- an important distinction:
+	- this rules states that all: yellow, bendy, fruit are bananas
+	- it does NOT state that all bananas are: yellow, bendy, and fruit
+
+Rules & Logical Consequence
+===========================
+parent (X, Y) :- father(X, Y).
+- X is a parent of Y IF X is a father of Y
+- parent(X, Y) is true whenever father(X, Y) is true
+- father (X, Y) implies parent (X, Y)
+	- father (X, Y) -> parent (X, Y)
+
+- in logic: for all X and all Y: if X is a father of Y, X is a parent of Y
+
+General Form
+============
+A :- B1, ..., BN
+- A and Bi are all atoms
+- A is the head of the clause
+- the list of Bi is the body
+- (B1 and B2 and ... and Bn) -> A
+
+Facts
+=====
+Fact A.
+Rule A :- B1, ... , Bn
+- A fact is a special case of a rule with no body
