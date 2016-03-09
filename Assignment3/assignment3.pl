@@ -7,6 +7,12 @@ xreverse([H|T], Y) :-
 	xreverse(T, Reverse),
 	append(Reverse, [H], Y).
 
+accumRev([], _, _).
+
+accumRev([H1|T1], Accum, Y) :-
+	accumRev(T1, [H1|Accum], Y),
+	Y = Accum
+
 % Question 2:
 xunique([], []).
 
