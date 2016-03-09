@@ -1,3 +1,5 @@
+:- module(assignment3, [xreverse/2, xunique/2, xunion/3]).
+
 %Question 1:
 xreverse([], _).
 
