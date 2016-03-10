@@ -1,4 +1,4 @@
-:- module(assignment3, [xreverse/2, xunique/2]).
+:- module(assignment3, [xreverse/2, xunique/2, xunion/3]).
 
 %Question 1:
 xreverse([H|T], Y) :-
@@ -18,3 +18,8 @@ xunique([H1|L1], [H2|L2]) :-
 	xunique(Lp, L2).
 
 % Question 3:
+xunion(L1, L2, L3) :-
+	xunique(L1, L4),
+	xunique(L2, L5),
+	append(L4, L5, L6),
+	xunique(L6, L3).
