@@ -19,7 +19,5 @@ xunique([H1|L1], [H2|L2]) :-
 
 % Question 3:
 xunion(L1, L2, L3) :-
-	xunique(L1, L4),
-	xunique(L2, L5),
-	append(L4, L5, L6),
-	xunique(L6, L3).
+	append(L1, L2, L4),
+	xunique(L4, L3).
