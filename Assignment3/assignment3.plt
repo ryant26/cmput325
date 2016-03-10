@@ -32,4 +32,15 @@
     	xunique([], L),
     	L == [].  
 
+    % ========================= Q2: Unique Tests ====================== 
+    test(union1) :-
+        xunion([a,c,a,d], [b,a,c], L), 
+        L == [a,c,d,b].
+
+    test(uinion2) :-
+        xunion([a,c,d], [b,a,c], [a,c,d,b]).
+        
+    test(uinion2, [fail]) :-
+        xunion([a,c,d], [b,a,c], [a,c,d,b,a]).
+
 :- end_tests(assignment3).
