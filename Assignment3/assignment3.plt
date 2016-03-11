@@ -98,5 +98,23 @@
     test(allConnected10, [nondet]) :-
         allConnected([c,b]).
 
+    % ========================= Q5: AllConnected Tests ====================== 
+    test(clique1, [nondet]) :-
+        clique([a,b,c]).
+
+    test(clique2, [nondet, fail]) :-
+        clique([a,b,c,d]).
+
+    test(clique3, [nondet]) :-
+        clique([a,d]).
+
+    test(clique5, [nondet]) :-
+        clique([a,e]).
+
+    test(clique7, [nondet, fail]) :-
+        clique([b,e]).
+
+    test(clique9, [nondet]) :-
+        clique([b,c]).
 
 :- end_tests(assignment3).
