@@ -1,4 +1,4 @@
-:- module(assignment3, [xreverse/2, xunique/2, xunion/3, removeLast/3]).
+:- module(assignment3, [xreverse/2, xunique/2, xunion/3, removeLast/3, xsubset/2, clique/1, allConnected/1]).
 
 %Question 1:
 xreverse([H|T], Y) :-
@@ -28,3 +28,33 @@ removeLast([X], [], X).
 removeLast([H1|T1], [H1|T2], L) :-
 	removeLast(T1, L2, L),
 	T2 = L2.
+
+%Q Question 5:
+node(a).
+node(b).
+node(c).
+node(d).
+node(e).
+
+edge(a,b).
+edge(b,c).
+edge(c,a).
+edge(d,a).
+edge(a,e).
+
+allConnected([_]).
+allConnected([A,B|T]) :-
+	connected(A,B),
+	allConnected([A|T]),
+	allConnected([B|T]).
+
+connected(A,B) :- edge(A,B).
+connected(A,B) :- edge(B,A).
+
+clique(L) :- findall(X,node(X),Nodes),
+             xsubset(L,Nodes), allConnected(L).
+
+xsubset([], _).
+xsubset([X|Xs], Set) :-
+  append(_, [X|Set1], Set),
+  xsubset(Xs, Set1).
