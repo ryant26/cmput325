@@ -67,4 +67,36 @@
         L1 = [],
         Last = [a,b,c].
 
+    % ========================= Q5: AllConnected Tests ====================== 
+    test(allConnected1, [nondet]) :-
+        allConnected([a,b,c]).
+
+    test(allConnected2, [nondet, fail]) :-
+        allConnected([a,b,c,d]).
+
+    test(allConnected3, [nondet]) :-
+        allConnected([a,d]).
+
+    test(allConnected4, [nondet]) :-
+        allConnected([d,a]).
+
+    test(allConnected5, [nondet]) :-
+        allConnected([a,e]).
+
+    test(allConnected6, [nondet]) :-
+        allConnected([e,a]).
+
+    test(allConnected7, [nondet, fail]) :-
+        allConnected([b,e]).
+
+    test(allConnected8, [nondet, fail]) :-
+        allConnected([e,b]).
+
+    test(allConnected9, [nondet]) :-
+        allConnected([b,c]).
+
+    test(allConnected10, [nondet]) :-
+        allConnected([c,b]).
+
+
 :- end_tests(assignment3).
