@@ -53,7 +53,7 @@ xsubset([X|Xs], Set) :-
 % maxClique()
 
 allCliques(L, Out) :-
-	xsubset(Subsets, L),
+	findall(Subset, xsubset(Subset, L), Subsets),
 	findCliques(Subsets, Out).
 
 findCliques([], _).
