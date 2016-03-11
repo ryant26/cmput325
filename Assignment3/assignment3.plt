@@ -32,7 +32,7 @@
     	xunique([], L),
     	L == [].  
 
-    % ========================= Q2: Unique Tests ====================== 
+    % ========================= Q3: Union Tests  ====================== 
     test(union1) :-
         xunion([a,c,a,d], [b,a,c], L), 
         L == [a,c,d,b].
@@ -42,5 +42,29 @@
         
     test(uinion2, [fail]) :-
         xunion([a,c,d], [b,a,c], [a,c,d,b,a]).
+
+    % ========================= Q4: Remove Last Tests ====================== 
+    test(removeLast1, [nondet]) :-
+        removeLast([a,c,a,d], L1, Last),
+        L1 == [a,c,a],
+        Last == d.
+
+    test(removeLast2, [nondet]) :-
+        removeLast([a,c,a,d], L1, d),
+        L1 == [a,c,a].
+
+    test(removeLast3, [fail]) :-
+        removeLast([a,c,a,d], L1, [d]),
+        L1 = [a,c,a].
+
+    test(removeLast4, [nondet]) :-
+        removeLast([a], L1, Last),
+        L1 = [],
+        Last = a.
+
+    test(removeLast5, [nondet]) :-
+        removeLast([[a,b,c]], L1, Last),
+        L1 = [],
+        Last = [a,b,c].
 
 :- end_tests(assignment3).

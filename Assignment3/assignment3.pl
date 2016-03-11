@@ -23,8 +23,7 @@ xunion(L1, L2, L3) :-
 	xunique(L4, L3).
 
 % Question 4:
-removeLast([X], [], L) :- 
-	L = X.
+removeLast([X], [], X).
 
 removeLast([H1|T1], [H1|T2], L) :-
 	removeLast(T1, L2, L),
