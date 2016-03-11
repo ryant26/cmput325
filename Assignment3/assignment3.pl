@@ -1,4 +1,4 @@
-:- module(assignment3, [xreverse/2, xunique/2, xunion/3, removeLast/3, xsubset/2, clique/1, allConnected/1]).
+:- module(assignment3, [xreverse/2, xunique/2, xunion/3, removeLast/3, xsubset/2, clique/1, allConnected/1, allCliques/2, findCliques/2]).
 
 :- use_module(graphs).
 
@@ -31,8 +31,7 @@ removeLast([H1|T1], [H1|T2], L) :-
 	removeLast(T1, L2, L),
 	T2 = L2.
 
-% Question 5:
-
+% Question 5.1:
 allConnected([_]).
 allConnected([A,B|T]) :-
 	connected(A,B),
@@ -49,3 +48,19 @@ xsubset([], _).
 xsubset([X|Xs], Set) :-
   append(_, [X|Set1], Set),
   xsubset(Xs, Set1).
+
+% Question 5.2:
+% maxClique()
+
+allCliques(L, Out) :-
+	xsubset(Subsets, L),
+	findCliques(Subsets, Out).
+
+findCliques([], _).
+
+findCliques([H1|T1], [H1|T2]) :-
+	clique(H1),
+	findCliques(T1, T2).
+
+findCliques([_|T1], L) :-
+	findCliques(T1, L).
