@@ -1,4 +1,4 @@
-:- module(assignment3, [xreverse/2, xunique/2, xunion/3]).
+:- module(assignment3, [xreverse/2, xunique/2, xunion/3, removeLast/3]).
 
 %Question 1:
 xreverse([H|T], Y) :-
@@ -21,3 +21,11 @@ xunique([H1|L1], [H2|L2]) :-
 xunion(L1, L2, L3) :-
 	append(L1, L2, L4),
 	xunique(L4, L3).
+
+% Question 4:
+removeLast([X], [], L) :- 
+	L = X.
+
+removeLast([H1|T1], [H1|T2], L) :-
+	removeLast(T1, L2, L),
+	T2 = L2.
