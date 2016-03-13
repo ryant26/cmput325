@@ -1,6 +1,6 @@
 :- module(assignment3, [xreverse/2, xunique/2, xunion/3, removeLast/3, xsubset/2, 
 	clique/1, allConnected/1, allCliques/2, cliqueOfLength/2, cliqueGreaterThan/2, difference/3,
-	notSubset/3, maxClique/2]).
+	subsetOfNone/3, maxClique/2]).
 
 :- use_module(graphs).
 
@@ -55,7 +55,7 @@ xsubset([X|Xs], Set) :-
  maxClique(X, Cliques) :-
  	findall(H, cliqueOfLength(X, H), LengthCliques),
  	findall(H, cliqueGreaterThan(X, H), GreaterCliques),
- 	notSubset(GreaterCliques, LengthCliques, Cliques).
+ 	subsetOfNone(GreaterCliques, LengthCliques, Cliques).
 
 
 cliqueOfLength(X,L) :-
@@ -68,12 +68,12 @@ cliqueGreaterThan(X, L) :-
 	length(L, Length),
 	Length > X.
 
-notSubset([], L2, L2).
+subsetOfNone([], L2, L2).
  
-notSubset([H1|T], L2, Out) :-
+subsetOfNone([H1|T], L2, Out) :-
 	findall(X, xsubset(X, H1), Subsets),
 	difference(Subsets, L2, Lp),
-	notSubset(T, Lp, Out).
+	subsetOfNone(T, Lp, Out).
 
 difference([], L2, L2).
 
