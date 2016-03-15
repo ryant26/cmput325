@@ -1,10 +1,12 @@
 :- module(assignment3, [xreverse/2, xunique/2, xunion/3, removeLast/3, xsubset/2, 
-	clique/1, allConnected/1, allCliques/2, cliqueOfLength/2, cliqueGreaterThan/2, difference/3,
+	clique/1, allConnected/1, cliqueOfLength/2, cliqueGreaterThan/2, difference/3,
 	subsetOfNone/3, maxClique/2]).
 
 :- use_module(graphs).
 
 %Question 1:
+xreverse([], []).
+
 xreverse([H|T], Y) :-
 	accumRev([H|T], [], Y).
 
@@ -31,7 +33,7 @@ removeLast([X], [], X).
 
 removeLast([H1|T1], [H1|T2], L) :-
 	removeLast(T1, L2, L),
-	T2 = L2.
+	T2 = L2.	
 
 % Question 5.1:
 allConnected([_]).
