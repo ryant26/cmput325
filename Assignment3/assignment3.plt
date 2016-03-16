@@ -168,21 +168,34 @@
     test(clique9, [nondet]) :-
         clique([b,c]).
 
+    test(clique_1, [nondet]) :-
+    clique([]).
+    test(clique_2, [nondet]) :-
+        clique([a]).
+    test(clique_3, [nondet]) :-
+        clique([b]).
+    test(clique_4, [nondet]) :-
+        clique([c]).
+    test(clique_5, [nondet]) :-
+        clique([a, b]).
+    test(clique_6, [nondet]) :-
+        clique([a, c]).
+
     % ========================= Q5.2 Max Clique Tests ====================== 
-    %% test(maxclique1) :-
-    %%     maxClique(2,Cliques),
-    %%     Cliques == [[a,d],[a,e]].
+    test(maxclique1) :-
+        maxclique(2,Cliques),
+        Cliques == [[a,d],[a,e]].
 
-    %% test(maxclique2) :-
-    %%     maxClique(3,Cliques),
-    %%     Cliques == [[a,b,c]].
+    test(maxclique2) :-
+        maxclique(3,Cliques),
+        Cliques == [[a,b,c]].
 
-    %% test(maxclique3) :-
-    %%     maxClique(1,Cliques),
-    %%     Cliques == [].
+    test(maxclique3) :-
+        maxclique(1,Cliques),
+        Cliques == [].
 
-    %% test(maxclique4) :-
-    %%     maxClique(0,Cliques),
-    %%     Cliques == [].
+    test(maxclique4) :-
+        maxclique(0,Cliques),
+        Cliques == [].
 
 :- end_tests(assignment3).
