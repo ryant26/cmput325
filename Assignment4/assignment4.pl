@@ -7,13 +7,8 @@
 fourSquares(N, L1) :-
 	L1 = [S1,S2,S3,S4],
 	L1 ins 0..N,
-	S1+S2+S3+S4 #= N,
-	square(S1),
-	square(S2),
-	square(S3),
-	square(S4),
+	(S1*S1)+(S2*S2)+(S3*S3)+(S4*S4) #= N,
+	S1 #=< S2,
+	S2 #=< S3,
+	S3 #=< S4,
 	label(L1).
-
-square(X) :-
-	Y #< X,
-	X #= Y*Y.
