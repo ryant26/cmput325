@@ -3,7 +3,7 @@
 disarm([], [], []).
 disarm(A, B, [H3|R3]) :-
 	findElement(A, B, L, E),
-	H3 = [[E], L],
+	H3 = [L, [E]],
 	removeAll(L, A, Aresult),
 	select(E, B, Bresult),
 	disarm(Aresult, Bresult, R3), 
@@ -33,6 +33,8 @@ removeAll([H|R], List, Result) :-
 
 sortedCheck([]).
 sortedCheck([_]).
-sortedCheck([[[H1], _], [[H2], _]|R]) :-
-	H1 =< H2,
+sortedCheck([[H1, _], [H2, _]|R]) :-
+	sumlist(H1, X),
+	sumlist(H2, Y),
+	X =< Y,
 	sortedCheck(R).
