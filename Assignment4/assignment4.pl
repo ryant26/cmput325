@@ -103,6 +103,17 @@ removeAll([H|R], List, Result) :-
 	select(H, List, Res),
 	removeAll(R, Res, Result).
 
+/*
+*	sortedCheck(list)
+*	returns true if list is sorted in ascending order according to the sum 
+* 	of the first element in each sublist. 
+*	
+*	eg. list = [ [[3,1], [10,20]], [[1,1], [30,20]] ] -> false 
+*				  (4)         >      (2)
+*
+*   eg. list = [ [[2,2], [10,20]], [[1,5], [30,20]] ] -> true
+*				  (4)         <      (6)
+*/
 sortedCheck([]).
 sortedCheck([_]).
 sortedCheck([[H1, _], [H2, _]|R]) :-
