@@ -35,9 +35,11 @@ disarm(A, B, [H3|R3]) :-
 
 
 findElement(A, B, L, E):-
-	select(X, A, ResA),
+	msort(A, Out),
+	select(X, Out, ResA),
 	member(Y, ResA),
-	member(E, B),
+	msort(B, BOut),
+	member(E, BOut),
 	X =< Y,
 	E is X + Y,
 	L = [X, Y].
