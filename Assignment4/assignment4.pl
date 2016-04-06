@@ -74,13 +74,12 @@ optimizedDisarm(A, B, [H3|R3]) :-
 	sortedCheck([H3|R3]),!.
 
 /*
-*	findElement(ListA, ListB, Soln)
-*	A helper function for the above "disarm". This function performs the actual computation of dismantlements.
-*	Arguments expected are the same as above, namely:
+*	findElement(ListA, ListB, OutputList, OutputElement)
+*	A helper function for the above "optimizedDisarm". This function chooses two unique
+*	elements from ListA whos sum is equal to 1 element in ListB. The two unique elements from
+* 	ListA are output in OutputList, the element from ListB is output in OutputElement.
 *	
-*	ListA - A list of country A's military divisions
-*	ListB - A list of country B's military divisions
-*	Soln - The solution to the disarm problem
+*	eg. ListA = [1,3], ListB = [4,5] -> OutputList = [1,3], OutputElement = 4
 */
 findElement(A, B, L, E):-
 	msort(A, Out),
@@ -92,6 +91,13 @@ findElement(A, B, L, E):-
 	E is X + Y,
 	L = [X, Y].
 
+/*
+*	removeAll(ToRemove, List, Result)
+*	A helper function for the above "optimizedDisarm". This function removes the first occurance
+*	of each element in ToRemove from List. The resulting list is output in Result.
+*	
+*	eg. ToRemove = [1,3], ListB = [1,3,3,5,6] -> Result = [3,5,6]
+*/
 removeAll([], R, R). 
 removeAll([H|R], List, Result) :-
 	select(H, List, Res),
