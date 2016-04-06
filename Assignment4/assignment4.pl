@@ -1,6 +1,6 @@
 :- module(assignment4, [fourSquares/2, disarm/3, findElement/4, removeAll/3, sortedCheck/1]).
 :- use_module(library(clpfd)).
-:- use_module(library(arithmetic)).
+
 
 
 % ======================== Question 1 ==========================
