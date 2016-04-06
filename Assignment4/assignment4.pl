@@ -3,7 +3,14 @@
 :- use_module(library(arithmetic)).
 
 
-% Question 1
+% ======================== Question 1 ==========================
+/*
+*	fourSquares(Number, List)
+*	True if, List contains 4 non-negative numbers whos sum is equal
+*   to Number. Furthermore, the List must be sorted in ascending order.
+*	
+*	eg. Number = 7 -> List = [1,1,1,2]
+*/
 fourSquares(N, L1) :-
 	L1 = [S1,S2,S3,S4],
 	L1 ins 0..N,
