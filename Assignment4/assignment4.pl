@@ -16,8 +16,13 @@ fourSquares(N, L1) :-
 
 % Question 2
 % ==========
-disarm([], [], []).
-disarm(A, B, [H3|R3]) :-
+disarm(A,B,C) :-
+	sumlist(A,X),
+	sumlist(B, X),
+	optimizedDisarm(A,B,C).
+
+optimizedDisarm([], [], []).
+optimizedDisarm(A, B, [H3|R3]) :-
 	findElement(A, B, L, E),
 	H3 = [L, [E]],
 	removeAll(L, A, Aresult),
@@ -25,7 +30,7 @@ disarm(A, B, [H3|R3]) :-
 	disarm(Aresult, Bresult, R3), 
 	sortedCheck([H3|R3]),!.
 
-disarm(A, B, [H3|R3]) :-
+optimizedDisarm(A, B, [H3|R3]) :-
 	findElement(B, A, L, E),
 	H3 = [[E], L],
 	removeAll(L, B, Bresult),
