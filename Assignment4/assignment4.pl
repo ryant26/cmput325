@@ -23,11 +23,39 @@ fourSquares(N, L1) :-
 
 % Question 2
 % ==========
+/*
+*	disarm(ListA, ListB, Soln)
+*	Each element of Soln represents one dismantlement, where a dismantlement 
+*	is a list containing two elements: the first element is a list of country A's 
+*	dismantlements and the second is a list of country B's dismantlements.
+*
+*	See Assignment specification for discussion on dismantlements
+*
+*	ListA - A list of country A's military divisions
+*	ListB - A list of country B's military divisions
+*	Soln - The solution to the disarm problem
+*	
+*	eg. ListA = [1,3,3,4,6,10,12], ListB = [3,4,7,9,16] -> Soln = [[[1, 3], [4]], [[3, 4], [7]], [[12], [3, 9]], [[6, 10], [16]]]
+*
+*
+*	** Developer note: disarm checks for a trivial false case, (The sum of ListA != ListB) then delegates to optimizedDisarm
+*	   for the heavy lifting **
+*
+*/
 disarm(A,B,C) :-
 	sumlist(A,X),
 	sumlist(B, X),
 	optimizedDisarm(A,B,C).
 
+/*
+*	optimizedDisarm(ListA, ListB, Soln)
+*	A helper function for the above "disarm". This function performs the actual computation of dismantlements.
+*	Arguments expected are the same as above, namely:
+*	
+*	ListA - A list of country A's military divisions
+*	ListB - A list of country B's military divisions
+*	Soln - The solution to the disarm problem
+*/
 optimizedDisarm([], [], []).
 optimizedDisarm(A, B, [H3|R3]) :-
 	findElement(A, B, L, E),
@@ -45,7 +73,15 @@ optimizedDisarm(A, B, [H3|R3]) :-
 	disarm(Aresult, Bresult, R3),
 	sortedCheck([H3|R3]),!.
 
-
+/*
+*	findElement(ListA, ListB, Soln)
+*	A helper function for the above "disarm". This function performs the actual computation of dismantlements.
+*	Arguments expected are the same as above, namely:
+*	
+*	ListA - A list of country A's military divisions
+*	ListB - A list of country B's military divisions
+*	Soln - The solution to the disarm problem
+*/
 findElement(A, B, L, E):-
 	msort(A, Out),
 	select(X, Out, ResA),
