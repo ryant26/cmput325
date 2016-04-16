@@ -18,26 +18,46 @@
 (
 	defun iscubeHelper(x y)
 	(
-		cond
-		((equal (* y y y) x) T)
-		((< x 0) 
-			(
-				cond
-				((< (* y y y) x) nil)
-				(T (iscubeHelper x (- y 1)))
+		let ((cubed (* y y y))) (
+			cond
+			((equal cubed x) T)
+			((< x 0) 
+				(
+					cond
+					((< cubed x) nil)
+					(T (iscubeHelper x (- y 1)))
+				)
+			)
+			((> x 0)
+				(
+					cond
+					((> cubed x) nil)
+					(T (iscubeHelper x (+ y 1)))
+				)
 			)
 		)
-		((> x 0)
-			(
-				cond
-				((> (* y y y) x) nil)
-				(T (iscubeHelper x (+ y 1)))
-			)
-		)
-
 	)
 )
 
-; TODO:
-; - Convert iscubeHelper to use let
-; - do some examples with mapcar, filter and reduce
+; ========================== Higher Order Functions ================================
+(
+	defun plusOne(x) 
+	(
+		+ x 1
+	)
+
+)
+
+(
+	defun addOneList(x)
+	(
+		mapcar 'plusOne x
+	)
+)
+
+(
+	defun addOneLambda(x)
+	(
+		mapcar #'(lambda (y) (+ 1 y)) x
+	)
+)
